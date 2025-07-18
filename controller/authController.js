@@ -1,5 +1,5 @@
 const userModel = require('../model/userModel');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const JWT = require('jsonwebtoken');
 
 
@@ -9,7 +9,7 @@ const userRegisterController = async (req,resp) => {
         const {name,age,aadharCardNumber,mobile,email,address,role,password,isVoted} = req.body
         if(!name || !age || !aadharCardNumber || !mobile || !email || !address || !password )
         {
-            resp.status(500).send({
+            return resp.status(500).send({
                 success:false,
                 message : 'Please provide all fields'
             })
@@ -18,7 +18,7 @@ const userRegisterController = async (req,resp) => {
         const existing = await userModel.findOne({email})
         if(existing)
         {
-            resp.status(500).send({
+            return resp.status(500).send({
                 success:false,
                 message:'User already exists'
             })
@@ -84,7 +84,7 @@ const userLoginController = async (req,resp) =>{
             })
         }
 
-        const token = JWT.sign({id:user.id},process.env.JWT_SECRET,{
+        const token = JWT.sign({ id:user._id},process.env.JWT_SECRET,{
             expiresIn:"7d"
         })
         return resp.status(200).send({
