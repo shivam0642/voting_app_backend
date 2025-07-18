@@ -20,6 +20,11 @@ app.use("/api/v1/auth",require("./routes/authRoutes"))
 app.use("/api/v1/user",require("./routes/userRoutes"))
 app.use("/api/v1/candidate",require("./routes/candidateRoutes"))
 
+app.get('/', (req, res) => {
+  res.send('API is working! 🚀');
+});
+
+
 PORT = process.env.PORT || 3000
 
 app.listen(PORT ,() => {
