@@ -5,6 +5,8 @@ const userModel = require("../model/userModel");
 const getAllCandidateController = async (req, resp) => {
     try {
         const candidates = await candidateModel.find();
+        console.log("Candidates:", candidates);
+        
         if(candidates.length === 0)
         {
             return resp.status(404).send({
@@ -20,7 +22,7 @@ const getAllCandidateController = async (req, resp) => {
         })
     } catch (error) {
         console.log(error);
-        response.status(500).send({
+        resp.status(500).send({
             success:false,
             message:"Error in Get all Cadidate API",
             error:error.message
@@ -154,5 +156,6 @@ const updateCandidateController = async (req,resp) => {
         })
     }
 }
+
 
 module.exports = {getAllCandidateController , insertCandidateController , removeCandidateController , updateCandidateController}
