@@ -47,17 +47,13 @@ voting-app-backend
 **Installation & Setup**
 
 >>Clone the repository
-
-git clone https://github.com/your-username/voting-app-backend.git
-cd voting-app-backend
+-git clone https://github.com/shivam0642/voting_app_backend.git
+-cd voting_app_backend
 
 >>Install dependencies
-
 npm install
 
-
 >>Setup environment variables
-
 Create a .env file in the root folder
 
 Add the following variables:
@@ -68,9 +64,7 @@ JWT_SECRET=your_secret_key
 
 
 >>Run the server
-
 npm start
-
 
 Server will run at: http://localhost:5000
 
